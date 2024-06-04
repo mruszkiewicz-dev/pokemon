@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Details } from "./components/Details";
 
 async function getRandomPokemon() {

@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { BG } from "./BG";
 
-export const Details = ({ pokemon }) => {
+export const Details = ({ pokemon }: any) => {
   if (!pokemon) {
     return <p>Loading...</p>;
   }
@@ -10,9 +11,14 @@ export const Details = ({ pokemon }) => {
   const imageUrl = pokemon.sprites?.other?.dream_world?.front_default || pokemon.sprites?.other?.home?.front_default;
 
   return (
-    <div>
-      <p>{pokemon.name}</p>
-      {imageUrl ? <Image src={imageUrl} alt={pokemon.name} width={500} height={500} /> : <p>No image available</p>}
-    </div>
+    <BG>
+      <div>
+        <p>{pokemon.name}</p>
+        {imageUrl ? <Image src={imageUrl} alt={pokemon.name} width={200} height={200} /> : <p>No image available</p>}
+        {pokemon.types.map((typ: any, i: any) => (
+          <p key={i}>{typ.type.name}</p>
+        ))}
+      </div>
+    </BG>
   );
 };
